@@ -1,15 +1,16 @@
-/* SalaryCalculator.css - גרסה מאוזנת ומרכזית */
+/* SalaryCalculator.css - גרסה מעודכנת ומעוצבת */
 
 /* גוף האפליקציה */
 .salary-calculator-container {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  width: 80rem; /* שינוי לרוחב דינמי */
-  margin: 40px auto; /* מרכוז אופקי */
-  padding: 35px;
-  background-color: #ffffff;
+  width: 90%;
+  max-width: 80rem;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: #fcfcfc; /* רקע בהיר ונעים יותר */
   border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  color: #2c3e50;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); /* צל עדין יותר */
+  color: #333;
   direction: rtl;
   text-align: right;
   border: 1px solid #e0e6ed;
@@ -18,65 +19,66 @@
 /* כותרת */
 h1 {
   text-align: center;
-  color: #2980b9;
-  margin-bottom: 30px;
-  font-size: 2.4rem;
+  color: #1d3557; /* כחול כהה ואלגנטי */
+  margin-bottom: 35px;
+  font-size: 2.6rem;
   font-weight: 700;
-  border-bottom: 2px solid #ecf0f1;
-  padding-bottom: 15px;
+  border-bottom: 3px solid #dee2e6; /* קו הפרדה רך יותר */
+  padding-bottom: 18px;
 }
 
 /* אזור הקלט */
 .input-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* התאמה אוטומטית לעמודות */
-  gap: 25px;
-  margin-bottom: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
 }
 
 .input-section label {
   display: flex;
   flex-direction: column;
   font-weight: 600;
-  font-size: 1rem;
-  color: #34495e;
+  font-size: 1.05rem;
+  color: #555;
 }
 
 .input-section input[type="number"] {
   width: 100%;
-  padding: 14px;
-  margin-top: 8px;
-  border: 1px solid #ced4da;
-  border-radius: 10px;
-  font-size: 1rem;
+  padding: 16px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1.1rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   box-sizing: border-box;
 }
 
 .input-section input[type="number"]:focus {
   outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 8px rgba(52, 152, 219, 0.25);
+  border-color: #1d3557; /* הדגשת פוקוס כחולה עמוקה */
+  box-shadow: 0 0 10px rgba(29, 53, 87, 0.25);
 }
 
 /* כפתור החישוב */
 .salary-calculator-container button {
   width: 100%;
-  padding: 16px;
-  background-color: #3498db;
+  padding: 18px;
+  background: #2a9d8f; /* ירוק-טורקיז עמוק וייחודי */
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 700;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  margin-top: 15px;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .salary-calculator-container button:hover {
-  background-color: #2980b9;
-  transform: translateY(-3px);
+  background-color: #26847b;
+  transform: translateY(-2px);
 }
 
 .salary-calculator-container button:active {
@@ -85,59 +87,62 @@ h1 {
 
 /* אזור התוצאות */
 .results-section {
-  margin-top: 50px;
-  padding: 30px;
-  background-color: #b8edfa71;
+  margin-top: 60px;
+  padding: 35px;
+  background: #e6eef9; /* רקע כחול-אפור בהיר */
   border-radius: 12px;
+  border: 1px solid #c9d2e1;
 }
 
 .results-section h2 {
   text-align: center;
-  font-size: 2rem;
-  color: #2c3e50;
-  margin-bottom: 25px;
-  border-bottom: 2px solid #bdc3c7;
-  padding-bottom: 12px;
+  font-size: 2.2rem;
+  color: #333;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #a5b9d0;
+  padding-bottom: 15px;
 }
 
 .results-table p {
   display: flex;
   justify-content: space-between;
-  font-size: 1.15rem;
-  padding: 10px 0;
-  border-bottom: 1px dashed #dce0e3;
-  color: #34495e;
+  font-size: 1.1rem;
+  padding: 12px 0;
+  border-bottom: 1px dashed #c9d2e1;
+  color: #555;
 }
 
 .results-table p:last-child {
   font-weight: 700;
-  color: #2980b9;
-  font-size: 1.2rem;
+  color: #2a9d8f; /* הדגשת שכר נטו בצבע הכפתור */
+  font-size: 1.25rem;
 }
 
 .results-table p strong {
-  color: #2980b9;
+  color: #2a9d8f;
   font-weight: 700;
 }
 
 /* עיצוב עלות מעסיק */
 .employer-cost-section {
-  margin-top: 30px;
-  background-color: #b8edfa71;
-
-  border: 1px solid #b2ebf2;
+  margin-top: 40px;
+  background: #ebf5f9; /* תכלת בהיר מאוד */
+  border: 1px solid #add8e6;
+  padding: 35px;
+  border-radius: 12px;
 }
 
 .employer-cost-section h2 {
-  color: #00796b;
-  border-color: #b2ebf2;
+  color: #1d3557;
+  border-color: #add8e6;
 }
 
 .employer-cost-section p:last-child {
-  color: #00796b;
+  color: #1d3557;
 }
 
 /* עיצוב שורה אחרונה של עלות מעסיק */
 .total-employer-cost span {
   font-weight: bold;
+  color: #1d3557;
 }
