@@ -120,7 +120,7 @@ const SalaryCalculator = () => {
           שכר ברוטו בסיסי:
           <input
             type="number"
-            value={brutoSalary}
+            value={brutoSalary || ""}
             onChange={(e) => setBrutoSalary(Number(e.target.value))}
           />
         </label>
