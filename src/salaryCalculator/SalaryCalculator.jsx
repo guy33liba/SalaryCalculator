@@ -22,9 +22,9 @@ const SalaryCalculator = () => {
   // Input State Variables
   const [brutoSalary, setBrutoSalary] = useState(17000);
   const [monthlyWorkDays, setMonthlyWorkDays] = useState(22);
-  const [absentDays, setAbsentDays] = useState(2);
-  const [overtime125, setOvertime125] = useState(2);
-  const [overtime150, setOvertime150] = useState(8);
+  const [absentDays, setAbsentDays] = useState(0);
+  const [overtime125, setOvertime125] = useState(0);
+  const [overtime150, setOvertime150] = useState(0);
   const [taxCredits, setTaxCredits] = useState(7.25);
   const [pensionRate, setPensionRate] = useState(6);
   const [employeerPensionPayment, setEmployeerPensionPayment] = useState(6.5);
