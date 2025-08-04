@@ -46,7 +46,7 @@ const SalaryCalculator = () => {
     // 1. Final Bruto Salary Calculation
     const dailyRate = brutoSalary / monthlyWorkDays;
     const deductionForAbsence = dailyRate * absentDays;
-    const hourlyRate = brutoSalary / 182;
+    const hourlyRate = brutoSalary / 186;
     const overtimePay = overtime125 * (hourlyRate * 1.25) + overtime150 * (hourlyRate * 1.5);
     const calculatedFinalBruto = brutoSalary - deductionForAbsence + overtimePay;
 
