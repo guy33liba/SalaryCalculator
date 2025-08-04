@@ -1,0 +1,143 @@
+/* SalaryCalculator.css - גרסה מאוזנת ומרכזית */
+
+/* גוף האפליקציה */
+.salary-calculator-container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 80rem; /* שינוי לרוחב דינמי */
+  margin: 40px auto; /* מרכוז אופקי */
+  padding: 35px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  color: #2c3e50;
+  direction: rtl;
+  text-align: right;
+  border: 1px solid #e0e6ed;
+}
+
+/* כותרת */
+h1 {
+  text-align: center;
+  color: #2980b9;
+  margin-bottom: 30px;
+  font-size: 2.4rem;
+  font-weight: 700;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 15px;
+}
+
+/* אזור הקלט */
+.input-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* התאמה אוטומטית לעמודות */
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.input-section label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #34495e;
+}
+
+.input-section input[type="number"] {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input-section input[type="number"]:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.25);
+}
+
+/* כפתור החישוב */
+.salary-calculator-container button {
+  width: 100%;
+  padding: 16px;
+  background-color: #3498db;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 15px;
+}
+
+.salary-calculator-container button:hover {
+  background-color: #2980b9;
+  transform: translateY(-3px);
+}
+
+.salary-calculator-container button:active {
+  transform: translateY(0);
+}
+
+/* אזור התוצאות */
+.results-section {
+  margin-top: 50px;
+  padding: 30px;
+  background-color: #b8edfa71;
+  border-radius: 12px;
+}
+
+.results-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #bdc3c7;
+  padding-bottom: 12px;
+}
+
+.results-table p {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.15rem;
+  padding: 10px 0;
+  border-bottom: 1px dashed #dce0e3;
+  color: #34495e;
+}
+
+.results-table p:last-child {
+  font-weight: 700;
+  color: #2980b9;
+  font-size: 1.2rem;
+}
+
+.results-table p strong {
+  color: #2980b9;
+  font-weight: 700;
+}
+
+/* עיצוב עלות מעסיק */
+.employer-cost-section {
+  margin-top: 30px;
+  background-color: #b8edfa71;
+
+  border: 1px solid #b2ebf2;
+}
+
+.employer-cost-section h2 {
+  color: #00796b;
+  border-color: #b2ebf2;
+}
+
+.employer-cost-section p:last-child {
+  color: #00796b;
+}
+
+/* עיצוב שורה אחרונה של עלות מעסיק */
+.total-employer-cost span {
+  font-weight: bold;
+}
