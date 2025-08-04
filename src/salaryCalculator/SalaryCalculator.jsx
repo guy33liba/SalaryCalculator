@@ -13,11 +13,11 @@ const SalaryCalculator = () => {
     { limit: 75920, rate: 0.47 },
     { limit: Infinity, rate: 0.5 },
   ];
-  const NATIONAL_INSURANCE_LOW_INCOME_LIMIT = 7522; // No change from what you had
-  const NATIONAL_INSURANCE_LOW_RATE_EMPLOYEE = 0.0094;
-  const NATIONAL_INSURANCE_HIGH_RATE_EMPLOYEE = 0.07;
-  const HEALTH_INSURANCE_LOW_RATE_EMPLOYEE = 0.031;
-  const HEALTH_INSURANCE_HIGH_RATE_EMPLOYEE = 0.05;
+  const NATIONAL_INSURANCE_LOW_INCOME_LIMIT = 7522; // UPDATED: National Insurance & Health Insurance rates for employee
+  const NATIONAL_INSURANCE_LOW_RATE_EMPLOYEE = 0.0104; // 1.04%
+  const NATIONAL_INSURANCE_HIGH_RATE_EMPLOYEE = 0.07; // 7%
+  const HEALTH_INSURANCE_LOW_RATE_EMPLOYEE = 0.0323; // 3.23%
+  const HEALTH_INSURANCE_HIGH_RATE_EMPLOYEE = 0.0517; // 5.17%
 
   const EMPLOYER_NI_LOW_RATE = 0.0355;
   const EMPLOYER_NI_HIGH_RATE = 0.076;
