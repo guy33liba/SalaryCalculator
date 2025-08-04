@@ -13,7 +13,7 @@ const SalaryCalculator = () => {
     { limit: 75480, rate: 0.47 },
     { limit: Infinity, rate: 0.5 },
   ];
-  const NATIONAL_INSURANCE_HEALTH_LIMIT = 7989.6;
+  const NATIONAL_INSURANCE_HEALTH_LIMIT = 7522;
   const NATIONAL_INSURANCE_LOW_RATE = 0.0104;
   const NATIONAL_INSURANCE_HIGH_RATE = 0.07;
   const HEALTH_INSURANCE_LOW_RATE = 0.0323;
