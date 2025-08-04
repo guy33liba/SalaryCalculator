@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SalaryCalculator.css";
 
 const SalaryCalculator = () => {
-  // Constants for 2025 rates
-  const TAX_CREDIT_VALUE = 242;
+  // Constants for 2025 rates - updated
+  const TAX_CREDIT_VALUE = 249; // Updated for 2025
   const TAX_BRACKETS = [
-    { limit: 7010, rate: 0.1 },
-    { limit: 10060, rate: 0.14 },
-    { limit: 16150, rate: 0.2 },
-    { limit: 22870, rate: 0.31 },
-    { limit: 54300, rate: 0.35 },
-    { limit: 75480, rate: 0.47 },
+    { limit: 7060, rate: 0.1 },
+    { limit: 10140, rate: 0.14 },
+    { limit: 16290, rate: 0.2 },
+    { limit: 23050, rate: 0.31 },
+    { limit: 54760, rate: 0.35 },
+    { limit: 75920, rate: 0.47 },
     { limit: Infinity, rate: 0.5 },
   ];
-  const NATIONAL_INSURANCE_HEALTH_LIMIT = 7522;
-  const NATIONAL_INSURANCE_LOW_RATE = 0.0104;
-  const NATIONAL_INSURANCE_HIGH_RATE = 0.07;
-  const HEALTH_INSURANCE_LOW_RATE = 0.0323;
-  const HEALTH_INSURANCE_HIGH_RATE = 0.0517;
+  const NATIONAL_INSURANCE_LOW_INCOME_LIMIT = 7522; // No change from what you had
+  const NATIONAL_INSURANCE_LOW_RATE_EMPLOYEE = 0.0094;
+  const NATIONAL_INSURANCE_HIGH_RATE_EMPLOYEE = 0.07;
+  const HEALTH_INSURANCE_LOW_RATE_EMPLOYEE = 0.031;
+  const HEALTH_INSURANCE_HIGH_RATE_EMPLOYEE = 0.05;
+
+  const EMPLOYER_NI_LOW_RATE = 0.0355;
+  const EMPLOYER_NI_HIGH_RATE = 0.076;
 
   // Input State Variables
   const [brutoSalary, setBrutoSalary] = useState(17000);
@@ -28,7 +31,7 @@ const SalaryCalculator = () => {
   const [taxCredits, setTaxCredits] = useState(2.25);
   const [pensionRate, setPensionRate] = useState(6);
   const [employeerPensionPayment, setEmployeerPensionPayment] = useState(6.5);
-  const [compensations, setCompensations] = useState(6);
+  const [compensations, setCompensations] = useState(8.33); // Updated to standard 8.33%
 
   // Output State Variables
   const [finalBruto, setFinalBruto] = useState(0);
@@ -46,7 +49,7 @@ const SalaryCalculator = () => {
     // 1. Final Bruto Salary Calculation
     const dailyRate = brutoSalary / monthlyWorkDays;
     const deductionForAbsence = dailyRate * absentDays;
-    const hourlyRate = brutoSalary / 186;
+    const hourlyRate = brutoSalary / 182;
     const overtimePay = overtime125 * (hourlyRate * 1.25) + overtime150 * (hourlyRate * 1.5);
     const calculatedFinalBruto = brutoSalary - deductionForAbsence + overtimePay;
 
@@ -72,12 +75,12 @@ const SalaryCalculator = () => {
     // 3. National Insurance & Health Insurance Calculation
     let nationalInsurance = 0;
     let healthInsurance = 0;
-    const lowRateIncome = Math.min(calculatedFinalBruto, NATIONAL_INSURANCE_HEALTH_LIMIT);
-    const highRateIncome = Math.max(0, calculatedFinalBruto - NATIONAL_INSURANCE_HEALTH_LIMIT);
-    nationalInsurance += lowRateIncome * NATIONAL_INSURANCE_LOW_RATE;
-    nationalInsurance += highRateIncome * NATIONAL_INSURANCE_HIGH_RATE;
-    healthInsurance += lowRateIncome * HEALTH_INSURANCE_LOW_RATE;
-    healthInsurance += highRateIncome * HEALTH_INSURANCE_HIGH_RATE;
+    const lowRateIncome = Math.min(calculatedFinalBruto, NATIONAL_INSURANCE_LOW_INCOME_LIMIT);
+    const highRateIncome = Math.max(0, calculatedFinalBruto - NATIONAL_INSURANCE_LOW_INCOME_LIMIT);
+    nationalInsurance += lowRateIncome * NATIONAL_INSURANCE_LOW_RATE_EMPLOYEE;
+    nationalInsurance += highRateIncome * NATIONAL_INSURANCE_HIGH_RATE_EMPLOYEE;
+    healthInsurance += lowRateIncome * HEALTH_INSURANCE_LOW_RATE_EMPLOYEE;
+    healthInsurance += highRateIncome * HEALTH_INSURANCE_HIGH_RATE_EMPLOYEE;
 
     // 4. Final Neto Salary
     const totalDeductions = finalTax + nationalInsurance + healthInsurance + pensionDeduction;
@@ -86,12 +89,19 @@ const SalaryCalculator = () => {
     // 5. Employer Cost Calculation
     const employerPensionContribution = calculatedFinalBruto * (employeerPensionPayment / 100);
     const employerCompensations = calculatedFinalBruto * (compensations / 100);
-    // חישוב ביטוח לאומי של מעסיק - שיעורים מותאמים
-    const employerNationalInsurance =
-      calculatedFinalBruto > NATIONAL_INSURANCE_HEALTH_LIMIT
-        ? (calculatedFinalBruto - NATIONAL_INSURANCE_HEALTH_LIMIT) * 0.075 +
-          NATIONAL_INSURANCE_HEALTH_LIMIT * 0.035
-        : calculatedFinalBruto * 0.035;
+
+    // Updated National Insurance calculation for employer
+    let employerNationalInsurance = 0;
+    const employerLowRateIncome = Math.min(
+      calculatedFinalBruto,
+      NATIONAL_INSURANCE_LOW_INCOME_LIMIT
+    );
+    const employerHighRateIncome = Math.max(
+      0,
+      calculatedFinalBruto - NATIONAL_INSURANCE_LOW_INCOME_LIMIT
+    );
+    employerNationalInsurance += employerLowRateIncome * EMPLOYER_NI_LOW_RATE;
+    employerNationalInsurance += employerHighRateIncome * EMPLOYER_NI_HIGH_RATE;
 
     const calculatedEmployerCost =
       calculatedFinalBruto +
@@ -111,6 +121,20 @@ const SalaryCalculator = () => {
     setEmployerNI(employerNationalInsurance.toFixed(2));
     setEmployerCost(calculatedEmployerCost.toFixed(2));
   };
+
+  useEffect(() => {
+    calculateSalary();
+  }, [
+    brutoSalary,
+    monthlyWorkDays,
+    absentDays,
+    overtime125,
+    overtime150,
+    taxCredits,
+    pensionRate,
+    employeerPensionPayment,
+    compensations,
+  ]);
 
   return (
     <div className="salary-calculator-container">
@@ -192,7 +216,7 @@ const SalaryCalculator = () => {
           אחוז הפרשה לפיצויים:
           <input
             type="number"
-            placeholder="לדוגמה: 6"
+            placeholder="לדוגמה: 8.33"
             value={compensations}
             onChange={(e) => setCompensations(Number(e.target.value))}
           />
