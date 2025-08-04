@@ -3,8 +3,7 @@
 /* גוף האפליקציה */
 .salary-calculator-container {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  width: 90%;
-  max-width: 80rem;
+  width: 60%;
   margin: 40px auto;
   padding: 40px;
   background-color: #fcfcfc; /* רקע בהיר ונעים יותר */
@@ -21,7 +20,7 @@ h1 {
   text-align: center;
   color: #1d3557; /* כחול כהה ואלגנטי */
   margin-bottom: 35px;
-  font-size: 2.6rem;
+  font-size: 3rem; /* הגדלת גודל הפונט */
   font-weight: 700;
   border-bottom: 3px solid #dee2e6; /* קו הפרדה רך יותר */
   padding-bottom: 18px;
@@ -39,7 +38,7 @@ h1 {
   display: flex;
   flex-direction: column;
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.2rem; /* הגדלת גודל הפונט */
   color: #555;
 }
 
@@ -49,7 +48,7 @@ h1 {
   margin-top: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  font-size: 1.1rem;
+  font-size: 1.2rem; /* הגדלת גודל הפונט */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   box-sizing: border-box;
 }
@@ -63,10 +62,10 @@ h1 {
 /* כפתור החישוב */
 .salary-calculator-container button {
   width: 100%;
-  padding: 18px;
+  padding: 20px; /* הגדלת גודל הכפתור */
   background: #2a9d8f; /* ירוק-טורקיז עמוק וייחודי */
   color: white;
-  font-size: 1.3rem;
+  font-size: 1.5rem; /* הגדלת גודל הפונט */
   font-weight: 700;
   border: none;
   border-radius: 10px;
@@ -88,7 +87,7 @@ h1 {
 /* אזור התוצאות */
 .results-section {
   margin-top: 60px;
-  padding: 35px;
+  padding: 40px; /* הגדלת ריווח פנימי */
   background: #e6eef9; /* רקע כחול-אפור בהיר */
   border-radius: 12px;
   border: 1px solid #c9d2e1;
@@ -96,7 +95,7 @@ h1 {
 
 .results-section h2 {
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 2.5rem; /* הגדלת גודל הפונט */
   color: #333;
   margin-bottom: 30px;
   border-bottom: 2px solid #a5b9d0;
@@ -106,8 +105,8 @@ h1 {
 .results-table p {
   display: flex;
   justify-content: space-between;
-  font-size: 1.1rem;
-  padding: 12px 0;
+  font-size: 1.3rem; /* הגדלת גודל הפונט */
+  padding: 15px 0; /* הגדלת ריווח בין השורות */
   border-bottom: 1px dashed #c9d2e1;
   color: #555;
 }
@@ -115,7 +114,7 @@ h1 {
 .results-table p:last-child {
   font-weight: 700;
   color: #2a9d8f; /* הדגשת שכר נטו בצבע הכפתור */
-  font-size: 1.25rem;
+  font-size: 1.5rem; /* הגדלת גודל הפונט */
 }
 
 .results-table p strong {
@@ -128,13 +127,14 @@ h1 {
   margin-top: 40px;
   background: #ebf5f9; /* תכלת בהיר מאוד */
   border: 1px solid #add8e6;
-  padding: 35px;
+  padding: 40px; /* הגדלת ריווח פנימי */
   border-radius: 12px;
 }
 
 .employer-cost-section h2 {
   color: #1d3557;
   border-color: #add8e6;
+  font-size: 2.5rem; /* הגדלת גודל הפונט */
 }
 
 .employer-cost-section p:last-child {
@@ -145,4 +145,30 @@ h1 {
 .total-employer-cost span {
   font-weight: bold;
   color: #1d3557;
+}
+
+/* התאמה למסכים קטנים - נשאר כפי שהיה */
+@media (max-width: 768px) {
+  .salary-calculator-container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .input-section {
+    grid-template-columns: 1fr;
+  }
+
+  .results-section h2,
+  .employer-cost-section h2 {
+    font-size: 2rem;
+  }
+
+  .results-table p,
+  .employer-cost-section p {
+    font-size: 1.1rem;
+  }
 }
