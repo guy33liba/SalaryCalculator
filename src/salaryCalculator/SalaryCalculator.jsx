@@ -120,6 +120,7 @@ const SalaryCalculator = () => {
           שכר ברוטו בסיסי:
           <input
             type="number"
+            placeholder="לדוגמה: 10000"
             value={brutoSalary || ""}
             onChange={(e) => setBrutoSalary(Number(e.target.value))}
           />
@@ -128,6 +129,7 @@ const SalaryCalculator = () => {
           ימי עבודה בחודש:
           <input
             type="number"
+            placeholder="לדוגמה: 22"
             value={monthlyWorkDays}
             onChange={(e) => setMonthlyWorkDays(Number(e.target.value))}
           />
@@ -136,6 +138,7 @@ const SalaryCalculator = () => {
           ימי היעדרות:
           <input
             type="number"
+            placeholder="לדוגמה: 0"
             value={absentDays}
             onChange={(e) => setAbsentDays(Number(e.target.value))}
           />
@@ -144,6 +147,7 @@ const SalaryCalculator = () => {
           שעות נוספות (125%):
           <input
             type="number"
+            placeholder="לדוגמה: 10"
             value={overtime125}
             onChange={(e) => setOvertime125(Number(e.target.value))}
           />
@@ -152,6 +156,7 @@ const SalaryCalculator = () => {
           שעות נוספות (150%):
           <input
             type="number"
+            placeholder="לדוגמה: 5"
             value={overtime150}
             onChange={(e) => setOvertime150(Number(e.target.value))}
           />
@@ -160,6 +165,7 @@ const SalaryCalculator = () => {
           נקודות זיכוי:
           <input
             type="number"
+            placeholder="לדוגמה: 2.25"
             value={taxCredits}
             onChange={(e) => setTaxCredits(Number(e.target.value))}
           />
@@ -168,6 +174,7 @@ const SalaryCalculator = () => {
           אחוז הפרשה לפנסיה (עובד):
           <input
             type="number"
+            placeholder="לדוגמה: 6"
             value={pensionRate}
             onChange={(e) => setPensionRate(Number(e.target.value))}
           />
@@ -176,6 +183,7 @@ const SalaryCalculator = () => {
           אחוז הפרשה לפנסיה (מעסיק):
           <input
             type="number"
+            placeholder="לדוגמה: 6.5"
             value={employeerPensionPayment}
             onChange={(e) => setEmployeerPensionPayment(Number(e.target.value))}
           />
@@ -184,12 +192,12 @@ const SalaryCalculator = () => {
           אחוז הפרשה לפיצויים:
           <input
             type="number"
+            placeholder="לדוגמה: 6"
             value={compensations}
             onChange={(e) => setCompensations(Number(e.target.value))}
           />
         </label>
       </div>
-
       <button onClick={calculateSalary}>חשב שכר</button>
 
       <div className="results-section">
