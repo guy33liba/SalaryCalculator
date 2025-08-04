@@ -6,7 +6,7 @@
   width: 64%;
   margin: 40px auto;
   padding: 40px;
-  background-color: #fcfcfc; /* רקע בהיר ונעים יותר */
+  background-color: #ffffff; /* רקע בהיר ונעים יותר */
   border-radius: 16px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); /* צל עדין יותר */
   color: #333;
@@ -48,6 +48,7 @@ h1 {
   margin-top: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  background-color: #eef0f3;
   font-size: 1.2rem; /* הגדלת גודל הפונט */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   box-sizing: border-box;
@@ -88,9 +89,9 @@ h1 {
 .results-section {
   margin-top: 60px;
   padding: 40px; /* הגדלת ריווח פנימי */
-  background: #e6eef9; /* רקע כחול-אפור בהיר */
+  background: #fff9f9; /* רקע כחול-אפור בהיר */
   border-radius: 12px;
-  border: 1px solid #c9d2e1;
+  border: 1px solid #29758f;
 }
 
 .results-section h2 {
@@ -125,8 +126,8 @@ h1 {
 /* עיצוב עלות מעסיק */
 .employer-cost-section {
   margin-top: 40px;
-  background: #ebf5f9; /* תכלת בהיר מאוד */
-  border: 1px solid #add8e6;
+  background: #fff9f9; /* תכלת בהיר מאוד */
+  border: 1px solid #29758f;
   padding: 40px; /* הגדלת ריווח פנימי */
   border-radius: 12px;
 }
