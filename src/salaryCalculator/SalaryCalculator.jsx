@@ -25,7 +25,7 @@ const SalaryCalculator = () => {
   const [absentDays, setAbsentDays] = useState(0);
   const [overtime125, setOvertime125] = useState(0);
   const [overtime150, setOvertime150] = useState(0);
-  const [taxCredits, setTaxCredits] = useState(7.25);
+  const [taxCredits, setTaxCredits] = useState(2.25);
   const [pensionRate, setPensionRate] = useState(6);
   const [employeerPensionPayment, setEmployeerPensionPayment] = useState(6.5);
   const [compensations, setCompensations] = useState(6);
