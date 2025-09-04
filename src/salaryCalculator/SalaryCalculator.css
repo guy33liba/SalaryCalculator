@@ -1,29 +1,69 @@
 /* SalaryCalculator.css - גרסה מעודכנת ומעוצבת */
 
+/* CSS Variables for Theming */
+body {
+  overflow-x: hidden;
+}
+:root {
+  --primary-bg: #ffffff;
+  --secondary-bg: #f8f9fa;
+  --card-bg: #fff9f9;
+  --primary-text: #333;
+  --secondary-text: #555;
+  --heading-color: #1d3557;
+  --accent-color: #2a9d8f;
+  --border-color: #e0e6ed;
+  --input-bg: #eef0f3;
+  --input-border: #ccc;
+  --focus-border: #1d3557;
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+}
+
+/* Dark Mode Variables */
+.dark-mode {
+  --primary-bg: #282c34;
+  --secondary-bg: #3c4049;
+  --card-bg: #3a404a;
+  --primary-text: #e0e0e0;
+  --secondary-text: #bbbbbb;
+  --heading-color: #a8dadc;
+  --accent-color: #457b9d;
+  --border-color: #4a4e57;
+  --input-bg: #4a4e57;
+  --input-border: #666;
+  --focus-border: #a8dadc;
+  --shadow-light: rgba(0, 0, 0, 0.3);
+  --shadow-medium: rgba(0, 0, 0, 0.4);
+}
+
 /* גוף האפליקציה */
 .salary-calculator-container {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   width: 64%;
   margin: 40px auto;
   padding: 40px;
-  background-color: #ffffff; /* רקע בהיר ונעים יותר */
+  background-color: var(--primary-bg);
   border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); /* צל עדין יותר */
-  color: #333;
+  box-shadow: 0 10px 40px var(--shadow-light);
+  color: var(--primary-text);
   direction: rtl;
   text-align: right;
-  border: 1px solid #e0e6ed;
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 /* כותרת */
 h1 {
   text-align: center;
-  color: #1d3557; /* כחול כהה ואלגנטי */
+  color: var(--heading-color);
   margin-bottom: 35px;
-  font-size: 3rem; /* הגדלת גודל הפונט */
+  font-size: 3rem;
   font-weight: 700;
-  border-bottom: 3px solid #dee2e6; /* קו הפרדה רך יותר */
+  border-bottom: 3px solid var(--border-color);
   padding-bottom: 18px;
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 /* אזור הקלט */
@@ -38,46 +78,51 @@ h1 {
   display: flex;
   flex-direction: column;
   font-weight: 600;
-  font-size: 1.2rem; /* הגדלת גודל הפונט */
-  color: #555;
+  font-size: 1.2rem;
+  color: var(--secondary-text);
+  transition: color 0.3s ease;
 }
 
 .input-section input[type="number"] {
   width: 100%;
   padding: 16px;
   margin-top: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--input-border);
   border-radius: 8px;
-  background-color: #eef0f3;
-  font-size: 1.2rem; /* הגדלת גודל הפונט */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--input-bg);
+  color: var(--primary-text);
+  font-size: 1.2rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease,
+    color 0.3s ease;
   box-sizing: border-box;
+}
+
+.input-section input[type="number"]:hover {
+  border-color: var(--focus-border);
 }
 
 .input-section input[type="number"]:focus {
   outline: none;
-  border-color: #1d3557; /* הדגשת פוקוס כחולה עמוקה */
-  box-shadow: 0 0 10px rgba(29, 53, 87, 0.25);
+  border-color: var(--focus-border);
+  box-shadow: 0 0 10px rgba(29, 53, 87, 0.25); /* Keep original shadow for focus for now */
 }
 
 /* כפתור החישוב */
 .salary-calculator-container button {
-  width: 100%;
-  padding: 20px; /* הגדלת גודל הכפתור */
-  background: #2a9d8f; /* ירוק-טורקיז עמוק וייחודי */
+  padding: 20px;
+  background: var(--accent-color);
   color: white;
-  font-size: 1.5rem; /* הגדלת גודל הפונט */
+  font-size: 1.5rem;
   font-weight: 700;
-  border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   margin-top: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px var(--shadow-medium);
 }
 
 .salary-calculator-container button:hover {
-  background-color: #26847b;
+  background-color: #26847b; /* Slightly darker accent for hover */
   transform: translateY(-2px);
 }
 
@@ -88,64 +133,96 @@ h1 {
 /* אזור התוצאות */
 .results-section {
   margin-top: 60px;
-  padding: 40px; /* הגדלת ריווח פנימי */
-  background: #fff9f9; /* רקע כחול-אפור בהיר */
+  padding: 40px;
+  background: var(--card-bg);
   border-radius: 12px;
-  border: 1px solid #29758f;
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .results-section h2 {
   text-align: center;
-  font-size: 2.5rem; /* הגדלת גודל הפונט */
-  color: #333;
+  font-size: 2.5rem;
+  color: var(--primary-text);
   margin-bottom: 30px;
-  border-bottom: 2px solid #a5b9d0;
+  border-bottom: 2px solid var(--border-color);
   padding-bottom: 15px;
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .results-table p {
   display: flex;
   justify-content: space-between;
-  font-size: 1.3rem; /* הגדלת גודל הפונט */
-  padding: 15px 0; /* הגדלת ריווח בין השורות */
-  border-bottom: 1px dashed #c9d2e1;
-  color: #555;
+  font-size: 1.3rem;
+  padding: 15px 0;
+  border-bottom: 1px dashed var(--border-color);
+  color: var(--secondary-text);
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .results-table p:last-child {
   font-weight: 700;
-  color: #2a9d8f; /* הדגשת שכר נטו בצבע הכפתור */
-  font-size: 1.5rem; /* הגדלת גודל הפונט */
+  color: var(--accent-color);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
 }
 
 .results-table p strong {
-  color: #2a9d8f;
+  color: var(--accent-color);
   font-weight: 700;
+  transition: color 0.3s ease;
 }
 
 /* עיצוב עלות מעסיק */
 .employer-cost-section {
   margin-top: 40px;
-  background: #fff9f9; /* תכלת בהיר מאוד */
-  border: 1px solid #29758f;
-  padding: 40px; /* הגדלת ריווח פנימי */
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 40px;
   border-radius: 12px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .employer-cost-section h2 {
-  color: #1d3557;
-  border-color: #add8e6;
-  font-size: 2.5rem; /* הגדלת גודל הפונט */
+  color: var(--heading-color);
+  border-color: var(--border-color);
+  font-size: 2.5rem;
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .employer-cost-section p:last-child {
-  color: #1d3557;
+  color: var(--heading-color);
+  transition: color 0.3s ease;
 }
 
 /* עיצוב שורה אחרונה של עלות מעסיק */
 .total-employer-cost span {
   font-weight: bold;
-  color: #1d3557;
+  color: var(--heading-color);
+  transition: color 0.3s ease;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+  top: 20px;
+  right: 20px;
+  background: var(--secondary-bg);
+  border: 2px solid var(--heading-color);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--shadow-light);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark-mode-toggle .icon {
+  color: var(--primary-text);
+  font-size: 1.6rem;
+  transition: color 0.3s ease;
 }
 
 /* התאמה למסכים קטנים - נשאר כפי שהיה */
@@ -171,5 +248,17 @@ h1 {
   .results-table p,
   .employer-cost-section p {
     font-size: 1.1rem;
+  }
+
+  .dark-mode-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .dark-mode-toggle .icon {
+    font-size: 1rem;
   }
 }

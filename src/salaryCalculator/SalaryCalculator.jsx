@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./SalaryCalculator.css";
 
 const SalaryCalculator = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   // Constants for 2025 rates - updated
   const TAX_CREDIT_VALUE = 249; // Updated for 2025
   const TAX_BRACKETS = [
@@ -137,7 +143,10 @@ const SalaryCalculator = () => {
   ]);
 
   return (
-    <div className="salary-calculator-container">
+    <div className={`salary-calculator-container ${darkMode ? "dark-mode" : ""}`}>
+      <button className="dark-mode-toggle" onClick={toggleDarkMode}>
+        <span className="icon">{darkMode ? "☀️" : "🌙"}</span>
+      </button>
       <h1>מחשבון שכר</h1>
       <div className="input-section">
         <label>
