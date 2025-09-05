@@ -11,9 +11,10 @@
     "server": "node server/index.js"
   },
   "dependencies": {
+    "express": "^4.19.2",
+    "node": "^20.19.5",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "express": "^4.19.2"
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
