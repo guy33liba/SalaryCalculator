@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./SalaryCalculator.css";
+import Clock from "./Clock";
 
 const SalaryCalculator = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -147,6 +148,7 @@ const SalaryCalculator = () => {
       <button className="dark-mode-toggle" onClick={toggleDarkMode}>
         <span className="icon">{darkMode ? "☀️" : "🌙"}</span>
       </button>
+      <Clock />
       <h1>מחשבון שכר</h1>
       <div className="input-section">
         <label>
