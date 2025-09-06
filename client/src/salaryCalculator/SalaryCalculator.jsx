@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./SalaryCalculator.css";
 import Clock from "./Clock";
+import CurrencyChanger from "./CurrencyChanger";
 
 const SalaryCalculator = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -99,22 +100,13 @@ const SalaryCalculator = () => {
 
     // Updated National Insurance calculation for employer
     let employerNationalInsurance = 0;
-    const employerLowRateIncome = Math.min(
-      calculatedFinalBruto,
-      NATIONAL_INSURANCE_LOW_INCOME_LIMIT
-    );
-    const employerHighRateIncome = Math.max(
-      0,
-      calculatedFinalBruto - NATIONAL_INSURANCE_LOW_INCOME_LIMIT
-    );
+    const employerLowRateIncome = Math.min(calculatedFinalBruto, NATIONAL_INSURANCE_LOW_INCOME_LIMIT);
+    const employerHighRateIncome = Math.max(0, calculatedFinalBruto - NATIONAL_INSURANCE_LOW_INCOME_LIMIT);
     employerNationalInsurance += employerLowRateIncome * EMPLOYER_NI_LOW_RATE;
     employerNationalInsurance += employerHighRateIncome * EMPLOYER_NI_HIGH_RATE;
 
     const calculatedEmployerCost =
-      calculatedFinalBruto +
-      employerPensionContribution +
-      employerCompensations +
-      employerNationalInsurance;
+      calculatedFinalBruto + employerPensionContribution + employerCompensations + employerNationalInsurance;
 
     // Update State
     setFinalBruto(calculatedFinalBruto.toFixed(2));
@@ -282,6 +274,7 @@ const SalaryCalculator = () => {
           </p>
         </div>
       </div>
+      <CurrencyChanger />
     </div>
   );
 };

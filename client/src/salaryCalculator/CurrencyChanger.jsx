@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import "./CurrencyChanger.css";
 const CurrencyChanger = () => {
   const exchangeRates = {
     USD: {
@@ -45,7 +45,7 @@ const CurrencyChanger = () => {
       CAD: 0.91,
     },
   };
-  const currencies = Object.key(exchangeRates);
+  const currencies = Object.keys(exchangeRates);
 
   const [amount, setAmount] = useState(1);
   const [fromCurrency, setFromCurrency] = useState("USD");
@@ -68,64 +68,67 @@ const CurrencyChanger = () => {
     convertCurrency();
   }, [amount, fromCurrency, toCurrency]);
   return (
-    <div>
+    <div className="currencyChangerWrapper">
       <div className="converterContainer">
-        <div className="inputGroup">
-          <label htmlFor="amount" className="label">
-            Amount
-          </label>
-          <input
-            type="number"
-            value={amount}
-            id="amount"
-            onChange={(e) => setAmount(e.target.value)}
-            className="inputField"
-          />
+        <h1 className="converterTitle">Currency Converter</h1>
+        <div className="inputSection">
+          <div className="inputGroup">
+            <label htmlFor="amount" className="label">
+              Amount
+            </label>
+            <input
+              type="number"
+              value={amount}
+              id="amount"
+              onChange={(e) => setAmount(e.target.value)}
+              className="inputField"
+            />
+          </div>
+          <div className="currencySelectors">
+            <div className="inputGroup currentSelect">
+              <label htmlFor="fromCurrency" className="label">
+                From
+              </label>
+              <select
+                id="fromCurrency"
+                value={fromCurrency}
+                onChange={(e) => setFromCurrency(e.target.value)}
+                className="selectField"
+              >
+                {currencies.map((currency) => (
+                  <option key={currency} value={currency}>
+                    {currency}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <span className="arrowIcon">→</span>
+            <div className="inputGroup currencySelect">
+              <label htmlFor="toCurrency" className="label">
+                To
+              </label>
+              <select
+                id="toCurrency"
+                value={toCurrency}
+                onChange={(e) => setToCurrency(e.target.value)}
+                className="selectField"
+              >
+                {currencies.map((currency) => (
+                  <option key={currency} value={currency}>
+                    {currency}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
         </div>
-        <div className="inputGroup currentSelect"></div>
-        <label htmlFor="" className="label">
-          From
-        </label>
-        <select
-          name=""
-          id="fromCurrency"
-          value={fromCurrency}
-          onChange={(e) => setFromCurrency(e.target.value)}
-          className="selectField"
-        >
-          {currencies.map((currency) => (
-            <option key={currency} value={currency}>
-              {currency}
-            </option>
-          ))}
-        </select>
-      </div>
-      <span className="arrowIcon">→</span>
-      <div className="inputGroup currencySelect">
-        <label htmlFor="" className="label">
-          To
-        </label>
-        <select
-          name=""
-          id="toCurrency"
-          value={toCurrency}
-          onChange={(e) => setToCurrency(e.target.value)}
-          className="selectField"
-        >
-          {currencies.map((currency) => (
-            <option key={currency} value={currency}>
-              {currency}
-            </option>
-          ))}
-        </select>
-      </div>
-      {/* Result section */}
-      <div className="resultSection">
-        <h2 className="resultLabel">Converted Amount</h2>
-        <p className="resultAmount animatePulse">
-          {result !== null ? result : "..."}
-          {toCurrency}
-        </p>
+        {/* Result section */}
+        <div className="resultSection">
+          <h2 className="resultLabel">Converted Amount</h2>
+          <p className="resultAmount animatePulse">
+            {result !== null ? result : "..."} {toCurrency}
+          </p>
+        </div>
       </div>
     </div>
   );

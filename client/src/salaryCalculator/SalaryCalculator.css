@@ -144,8 +144,6 @@ h2 {
   background-color: #229954; /* Slightly darker green for hover */
   box-shadow: 0 8px 20px var(--shadow-medium);
   transition: 0.5s;
-  height: 50px;
-  width: 50px;
 }
 
 .salary-calculator-container button:active {
@@ -321,7 +319,6 @@ h2 {
     font-size: 1.5rem;
   }
 }
-
 
 /* Clock Styles */
 .clock {
