@@ -6,7 +6,7 @@
   align-items: center;
   border-radius: 40%;
   min-height: 50vh; /* Full viewport height */
-  background-color: #6c91e7; /* Darker background for the whole page */
+  background-color: #8125d6; /* Darker background for the whole page */
 }
 
 .converterContainer {
@@ -15,7 +15,7 @@
   margin: 1rem auto; /* Adjust margin */
   border-radius: 30%;
   padding: 1.5rem;
-  background-color: #1e3a68; /* Slightly lighter dark background */
+  background-color: #273853ad; /* Slightly lighter dark background */
   border-radius: 0.75rem; /* Slightly less rounded corners */
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Subtle shadow */
 }
