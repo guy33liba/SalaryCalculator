@@ -53,15 +53,33 @@ const CurrencyChanger = () => {
   const [result, setResult] = useState(null);
 
   const convertCurrency = () => {
-    if (exchangeRates[fromCurrency] && exchangeRates[fromCurrency][toCurrency]) {
-      const rate = exchangeRates[fromCurrency][toCurrency];
-      const convertedAmount = amount * rate;
-      setResult(convertedAmount.toFixed(2));
-    } else {
-      const rateFrom = exchangeRates[fromCurrency]["USD"];
-      const rateTo = exchangeRates["USD"][toCurrency];
-      const convertedAmount = amount * rateFrom * rateTo;
-      setResult(convertedAmount.toFixed(2));
+    // if (exchangeRates[fromCurrency] && exchangeRates[fromCurrency][toCurrency]) {
+    //   const rate = exchangeRates[fromCurrency][toCurrency];
+    //   const convertedAmount = amount * rate;
+    //   setResult(convertedAmount.toFixed(2));
+    // } else {
+    //   const rateFrom = exchangeRates[fromCurrency]["USD"];
+    //   const rateTo = exchangeRates["USD"][toCurrency];
+    //   const convertedAmount = amount * rateFrom * rateTo;
+    //   setResult(convertedAmount.toFixed(2));
+    // }
+    if (fromCurrency === toCurrency) {
+      setResult(amount.toFixed(2));
+      return;
+    }
+    const visited = new Set();
+    const queue = [{ currency: fromCurrency, rate: 1 }];
+    while (queue.length > 0) {
+      const { currency, rate } = queue.shift();
+      if (currency === toCurrency) {
+        setResult((amount * rate).toFixed(2));
+      }
+      visited.add(currency);
+
+      const neighbors = exchangeRates[currency] || {};
+      for (const [nextCurrnecy, nextRate] of Object.entries(neighbors)) {
+        if(!visited.has(nextCurrnecy))
+      }
     }
   };
   useEffect(() => {
