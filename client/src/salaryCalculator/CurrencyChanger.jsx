@@ -87,7 +87,7 @@ const CurrencyChanger = () => {
           <div className="currencySelectors">
             <div className="inputGroup currentSelect">
               <label htmlFor="fromCurrency" className="label">
-                From
+                To
               </label>
               <select
                 id="fromCurrency"
@@ -105,7 +105,7 @@ const CurrencyChanger = () => {
             <span className="arrowIcon">→</span>
             <div className="inputGroup currencySelect">
               <label htmlFor="toCurrency" className="label">
-                To
+                From
               </label>
               <select
                 id="toCurrency"
