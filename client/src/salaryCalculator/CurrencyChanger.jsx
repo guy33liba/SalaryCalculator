@@ -67,20 +67,29 @@ const CurrencyChanger = () => {
       setResult(amount.toFixed(2));
       return;
     }
+
     const visited = new Set();
     const queue = [{ currency: fromCurrency, rate: 1 }];
+
     while (queue.length > 0) {
       const { currency, rate } = queue.shift();
+
       if (currency === toCurrency) {
         setResult((amount * rate).toFixed(2));
+        return;
       }
+
       visited.add(currency);
 
       const neighbors = exchangeRates[currency] || {};
-      for (const [nextCurrnecy, nextRate] of Object.entries(neighbors)) {
-        if(!visited.has(nextCurrnecy))
+      for (const [nextCurrency, nextRate] of Object.entries(neighbors)) {
+        if (!visited.has(nextCurrency)) {
+          queue.push({ currency: nextCurrency, rate: rate * nextRate });
+        }
       }
     }
+
+    setResult("שגיאה: אין מסלול המרה זמין");
   };
   useEffect(() => {
     convertCurrency();
